@@ -32,7 +32,10 @@ export default class AddWord extends React.Component {
             meaning: this.state.meaning,
         })
 
-        alert(`"${response.data.word}" Adionado(a) ao Glossário com sucesso.`);
+        if (response.data.error)
+            alert("ERROR: Palavra já cadastrada ao Glossário.");
+        else
+            alert(`"${response.data.word}" Adicionado(a) ao Glossário com sucesso.`);
     }
 
     render() {

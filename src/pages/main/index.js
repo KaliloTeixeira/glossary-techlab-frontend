@@ -35,7 +35,7 @@ export default class Main extends React.Component {
     }
 
     compare(a, b) {
-        if (a.word < b.word)
+        if (a.word.toLowerCase() < b.word.toLowerCase())
             return -1;
         if (a.word > b.word)
             return 1;
@@ -47,7 +47,7 @@ export default class Main extends React.Component {
         alert("Excluido com Sucesso!");
         this.loadWords();
     }
-
+    Familia
     handleSearchTerm(event) {
         event.preventDefault();
         if (!event.target.value)
