@@ -10,26 +10,27 @@ export default class Main extends React.Component {
         words: [],
         wordInfo: [],
         page: 1,
+        loading: false,
     }
 
     //Quando o componente for criado
     componentDidMount() {
-        this.loadProducts();
+        this.setState({ loading: true });
+        this.loadWords();
     }
 
-    loadProducts = async (page = 1) => {
+    loadWords = async (page = 1) => {
         const response = await api.get(`/words?page=${page}`);
-        console.log(response);
 
         const { docs, ...wordInfo } = response.data;
 
-        this.setState({ words: docs, wordInfo, page });
+        this.setState({ words: docs, wordInfo, page, loading: false });
     }
 
-    async deleteProduct(word) {
+    async deleteWord(word) {
         const response = await api.delete(`/word/${word._id}`);
         alert("Excluido com Sucesso!");
-        this.loadProducts();
+        this.loadWords();
     }
 
     prevPage = () => {
@@ -39,7 +40,7 @@ export default class Main extends React.Component {
 
         const pageNumber = page - 1;
 
-        this.loadProducts(pageNumber);
+        this.loadWords(pageNumber);
     }
 
     nextPage = () => {
@@ -49,28 +50,32 @@ export default class Main extends React.Component {
 
         const pageNumber = page + 1;
 
-        this.loadProducts(pageNumber);
+        this.loadWords(pageNumber);
     }
 
 
     // O render fica escutando o state e quando há alguma alteração ele atualiza automaticamente
     render() {
-        const { words, page, wordInfo } = this.state;
+        const { words, page, wordInfo, loading } = this.state;
 
         //A key serve para atribuir um valor unico a cada elemento gerado pelo map
         return (
             <div className="container">
-                <div className="product-list" >
-                    <div className="add-product-button">
+                <div className="word-list" >
+                    <div className="add-word-button">
                         <Link to={'/new'} > <MdAddBox /> Adicionar Palavra</Link>
+                    </div>
+
+                    <div disabled={loading}>
+                        {loading && <div className="loading-spinner" ></div>}
                     </div>
 
                     {words.map(word => (
                         <article key={word._id} >
                             <strong> {word.word} </strong>
-                            <button className="delete-icon" value={word._id} onClick={() => this.deleteProduct(word)} > <MdDelete /> </button>
+                            <button className="delete-icon" value={word._id} onClick={() => this.deleteWord(word)} > <MdDelete /> </button>
                             <p> {word.meaning} </p>
-                            {/* <Link to={`/word/${word._id}`} > Acessar </Link> */}
+                            <Link to={`/word/${word._id}`} > Detalhar </Link>
                         </article>
                     ))}
                     <div className="actions" >

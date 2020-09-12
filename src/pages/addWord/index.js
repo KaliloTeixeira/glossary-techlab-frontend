@@ -5,7 +5,7 @@ import { MdArrowBack } from 'react-icons/md';
 
 import './styles.css';
 
-export default class AddProduct extends React.Component {
+export default class AddWord extends React.Component {
     constructor() {
         super();
         this.handleWord = this.handleWord.bind(this);
@@ -32,23 +32,22 @@ export default class AddProduct extends React.Component {
             meaning: this.state.meaning,
         })
 
-        console.log(response);
-        alert(response);
+        alert(`"${response.data.word}" Adionado(a) ao Glossário com sucesso.`);
     }
 
     render() {
         return (
-            <div className="add-product-container">
-                <div className="add-product">
+            <div className="add-word-container">
+                <div className="add-word">
                     <h1> Nova Palavra </h1>
-                    <form onSubmit={this.handleSubmit} >
+                    <form >
                         <label>Palavra</label>
                         <input type="text" name="word" value={this.state.name} onChange={this.handleWord} />
 
                         <label>Significado</label>
-                        <input type="text" name="meaning" value={this.state.description} onChange={this.handleMeaning} />
+                        <textarea type="text" name="meaning" value={this.state.description} onChange={this.handleMeaning} />
 
-                        <input className="submit-button" type="submit" value="Adicionar ao Glossário" />
+                        <div className="submit-button" onClick={this.handleSubmit} value="Adicionar ao Glossário">Adicionar ao Glossário</div>
                     </form>
                 </div>
                 <div className="arrow-back" >

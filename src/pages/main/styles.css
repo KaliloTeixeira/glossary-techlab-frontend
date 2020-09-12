@@ -1,9 +1,9 @@
-.product-list .add-product-button {
+.word-list .add-word-button {
     display: flex;
     justify-content: center;
     margin: 15px 0;
 }
-.product-list .add-product-button a{
+.word-list .add-word-button a{
     padding: 5px;
     padding-top: 8px;
     margin: 0 10px;
@@ -18,18 +18,18 @@
     text-decoration: none;
 }
 
-.product-list .add-product-button a:hover {
+.word-list .add-word-button a:hover {
     opacity: 0.7;
 }
 
-.product-list {
+.word-list {
     max-width: 700px;
     margin: 20px auto 0;
     padding: 0 20px;
     margin-top: 70px;
 }
 
-.product-list article {
+.word-list article {
     background-color: #ffffff;
     border: 1px solid #dddddd;
     border-radius: 5px;
@@ -37,18 +37,19 @@
     margin-bottom: 20px;
 }
 
-.product-list article strong {
+.word-list article strong {
     color: #653f86;
 }
 
-.product-list article p {
+.word-list article p {
     font-size: 16px;
     color: #999999;
     margin-top: 5px;
     line-height: 24px;
+    Word-wrap: break-Word;
 }
 
-.product-list article a {
+.word-list article a {
     height: 42px;
     border-radius: 5px;
     border: 2px solid #653f86;
@@ -64,19 +65,19 @@
     transition: 0.3s;
 }
 
-.product-list article a:hover {
+.word-list article a:hover {
     background-color: #653f86;
     color: #ffffff;
 }
 
-.product-list .actions {
+.word-list .actions {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.product-list .actions button {
+.word-list .actions button {
     padding: 5px;
     padding-top: 8px;
     border-radius: 5px;
@@ -89,25 +90,25 @@
     cursor: pointer;
 }
 
-.product-list .actions button[disabled] {
+.word-list .actions button[disabled] {
     opacity: 0.5;
     cursor: default;
 }
 
-.product-list .actions button:hover{
+.word-list .actions button:hover{
     opacity: 0.7;
 }
 
-.product-list .actions button[disabled]:hover {
+.word-list .actions button[disabled]:hover {
     opacity: 0.5;
 }
 
-.product-list .actions strong {
+.word-list .actions strong {
     color: #653f86;
     font-size: 18px;
 }
 
-.product-list .delete-icon {
+.word-list .delete-icon {
     float: right;
     border: none;
     background-color: #ffffff;
@@ -118,6 +119,22 @@
     font-size: 20px;
 }
 
-.product-list .delete-icon:hover {
+.word-list .delete-icon:hover {
     opacity: 1;
+}
+
+.word-list .loading-spinner {
+    height: 5rem;
+    width: 5rem;
+    margin: 13rem auto;
+
+    border-radius: 50%;
+    border: 8px solid rgba(101, 63, 134, 0.3);
+    border-left-color: rgb(101, 63, 134);
+
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg)}
 }

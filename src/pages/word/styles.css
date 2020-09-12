@@ -21,7 +21,7 @@
 .word-info h1 {
     text-align: center;
     font-size: 32px;
-    color: #da552f;
+    color: #653f86;
 }
 
 .word-info p {
@@ -31,7 +31,7 @@
 }
 
 .word-info p a {
-    color: #da552f;
+    color: #653f86;
 }
 
 .word-info .arrow-back {
@@ -40,7 +40,7 @@
 
 .word-info .arrow-back a{
     font-size: 40px;
-    color: #da552f;
+    color: #653f86;
     text-decoration: none;
 }
 

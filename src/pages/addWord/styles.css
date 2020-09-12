@@ -1,4 +1,4 @@
-.add-product-container {
+.add-word-container {
     max-width: 700px;
     height: 400px;
     margin: auto;
@@ -6,7 +6,7 @@
     margin-top: 80px;
 }
 
-.add-product {
+.add-word {
     width: 90%;
     display: block;
     margin: 20px;
@@ -16,22 +16,22 @@
     border: 1px solid #dddddd;
 }
 
-.add-product h1 {
+.add-word h1 {
     text-align: center;
     color: rgb(101, 63, 134);
 }
 
-.add-product form {
+.add-word form {
     display: flex;
     flex-flow: column;
 }
 
-.add-product form label {
+.add-word form label {
     margin: 20px 0 5px 0;
     color:rgb(101, 63, 134, 1);
 }
 
-.add-product form input {
+.add-word form input, textarea {
     border: 1px solid rgb(101, 63, 134, 0.3);
     background-color: rgb(101, 63, 134, 0.1);
     border-radius: 5px;
@@ -39,9 +39,10 @@
     color: #653f86;
     font-size: 16px;
     padding: 0 10px;
+    resize: none;
 }
 
-.add-product form .submit-button {
+.add-word form .submit-button {
     height: 42px;
     border-radius: 5px;
     border: 2px solid #653f86;
@@ -58,7 +59,7 @@
     transition: 0.3s;
 }
 
-.add-product form .submit-button:hover {
+.add-word form .submit-button:hover {
     background: #653f86;
     color: #ffffff;
 }

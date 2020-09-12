@@ -19,13 +19,13 @@ export default class Word extends React.Component {
     }
 
     render() {
-        const { product } = this.state;
+        const { word } = this.state;
 
         return (
             <div className="word-info" >
                 <div className="word-info-word">
-                    {/* <h1>{word.word} </h1>
-                    <p> {word.meaning} </p> */}
+                    <h1>{word.word} </h1>
+                    <p> {word.meaning} </p>
                 </div>
 
                 <div className="arrow-back" >
