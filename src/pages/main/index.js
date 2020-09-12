@@ -8,8 +8,6 @@ import './styles.css';
 export default class Main extends React.Component {
     state = {
         words: [],
-        wordInfo: [],
-        page: 1,
         loading: false,
     }
 
@@ -20,15 +18,14 @@ export default class Main extends React.Component {
     }
 
     loadWords = async (page = 1) => {
-        const response = await api.get(`/words?page=${page}`);
+        const response = await api.get(`/words`);
 
-        const { docs, ...wordInfo } = response.data;
-        console.log(docs);
-        docs.sort(this.compare);
-        console.log(docs);
+        const words = response.data;
+        console.log(words);
+        words.sort(this.compare);
+        console.log(words);
 
-
-        this.setState({ words: docs, wordInfo, page, loading: false });
+        this.setState({ words, loading: false });
     }
 
     compare(a, b) {
@@ -45,25 +42,25 @@ export default class Main extends React.Component {
         this.loadWords();
     }
 
-    prevPage = () => {
-        const { page } = this.state;
+    // prevPage = () => {
+    //     const { page } = this.state;
 
-        if (page === 1) return;
+    //     if (page === 1) return;
 
-        const pageNumber = page - 1;
+    //     const pageNumber = page - 1;
 
-        this.loadWords(pageNumber);
-    }
+    //     this.loadWords(pageNumber);
+    // }
 
-    nextPage = () => {
-        const { page, wordInfo } = this.state;
+    // nextPage = () => {
+    //     const { page, wordInfo } = this.state;
 
-        if (page === wordInfo.pages) return;
+    //     if (page === wordInfo.pages) return;
 
-        const pageNumber = page + 1;
+    //     const pageNumber = page + 1;
 
-        this.loadWords(pageNumber);
-    }
+    //     this.loadWords(pageNumber);
+    // }
 
 
     // O render fica escutando o state e quando há alguma alteração ele atualiza automaticamente
@@ -90,11 +87,11 @@ export default class Main extends React.Component {
                             <Link to={`/word/${word._id}`} > Detalhar </Link>
                         </article>
                     ))}
-                    <div className="actions" >
+                    {/* <div className="actions" >
                         <button disabled={page === 1} onClick={this.prevPage} > <MdKeyboardArrowLeft /> </button>
                         <strong> {page} </strong>
                         <button disabled={page === wordInfo.pages} onClick={this.nextPage} > <MdKeyboardArrowRight /> </button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         );
