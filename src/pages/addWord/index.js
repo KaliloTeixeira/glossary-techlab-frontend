@@ -33,7 +33,7 @@ export default class AddWord extends React.Component {
         })
 
         if (response.data.error)
-            alert("ERROR: Palavra já cadastrada ao Glossário.");
+            alert("ERROR: Palavra já existe no Glossário.");
         else
             alert(`"${response.data.word}" Adicionado(a) ao Glossário com sucesso.`);
     }
