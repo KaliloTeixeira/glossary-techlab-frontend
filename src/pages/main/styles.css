@@ -1,0 +1,123 @@
+.product-list .add-product-button {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+.product-list .add-product-button a{
+    padding: 5px;
+    padding-top: 8px;
+    margin: 0 10px;
+    border: 0;
+    background: none;
+    color: #653f86;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.product-list .add-product-button a:hover {
+    opacity: 0.7;
+}
+
+.product-list {
+    max-width: 700px;
+    margin: 20px auto 0;
+    padding: 0 20px;
+    margin-top: 70px;
+}
+
+.product-list article {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.product-list article strong {
+    color: #653f86;
+}
+
+.product-list article p {
+    font-size: 16px;
+    color: #999999;
+    margin-top: 5px;
+    line-height: 24px;
+}
+
+.product-list article a {
+    height: 42px;
+    border-radius: 5px;
+    border: 2px solid #653f86;
+    background: none;
+    margin-top: 10px;
+    color: #653f86;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.product-list article a:hover {
+    background-color: #653f86;
+    color: #ffffff;
+}
+
+.product-list .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.product-list .actions button {
+    padding: 5px;
+    padding-top: 8px;
+    border-radius: 5px;
+    margin: 0 10px;
+    border: 0;
+    background: #653f86;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.product-list .actions button[disabled] {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.product-list .actions button:hover{
+    opacity: 0.7;
+}
+
+.product-list .actions button[disabled]:hover {
+    opacity: 0.5;
+}
+
+.product-list .actions strong {
+    color: #653f86;
+    font-size: 18px;
+}
+
+.product-list .delete-icon {
+    float: right;
+    border: none;
+    background-color: #ffffff;
+    color: #653f86;
+    opacity: 0.7;
+    transition: all 0.2s;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.product-list .delete-icon:hover {
+    opacity: 1;
+}
