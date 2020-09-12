@@ -23,8 +23,20 @@ export default class Main extends React.Component {
         const response = await api.get(`/words?page=${page}`);
 
         const { docs, ...wordInfo } = response.data;
+        console.log(docs);
+        docs.sort(this.compare);
+        console.log(docs);
+
 
         this.setState({ words: docs, wordInfo, page, loading: false });
+    }
+
+    compare(a, b) {
+        if (a.word < b.word)
+            return -1;
+        if (a.word > b.word)
+            return 1;
+        return 0;
     }
 
     async deleteWord(word) {
