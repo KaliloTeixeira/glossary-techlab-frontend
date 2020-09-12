@@ -24,7 +24,7 @@ I've created that glossary as personal project to improve my knowledges in Web D
 
 # Web App - Movile Visualization
 <p align="center" >
-  <img src="/layout/img04.PNG" width="250">
-  <img src="/layout/img05.PNG" width="250">
-  <img src="/layout/img06.PNG" width="250">
+  <img src="/layout/img04.jpg" width="250">
+  <img src="/layout/img05.jpg" width="250">
+  <img src="/layout/img06.jpg" width="250">
 </p>
