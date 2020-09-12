@@ -44,4 +44,18 @@
     text-decoration: none;
 }
 
+.word-info .loading-spinner {
+    height: 5rem;
+    width: 5rem;
+    margin: auto;
 
+    border-radius: 50%;
+    border: 8px solid rgba(101, 63, 134, 0.3);
+    border-left-color: rgb(101, 63, 134);
+
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg)}
+}

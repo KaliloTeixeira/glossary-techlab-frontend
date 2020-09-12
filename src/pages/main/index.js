@@ -1,15 +1,24 @@
 import React from 'react';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
-import { MdDelete, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdAddBox } from 'react-icons/md';
+import { MdDelete, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdAdd, MdSearch } from 'react-icons/md';
 
 import './styles.css';
 
 export default class Main extends React.Component {
+    constructor() {
+        super();
+        this.handleSearchTerm = this.handleSearchTerm.bind(this);
+    }
+
     state = {
         words: [],
         loading: false,
+        searchTerm: '',
+        noWords: false,
     }
+
+    foundWords = [];
 
     //Quando o componente for criado
     componentDidMount() {
@@ -17,15 +26,12 @@ export default class Main extends React.Component {
         this.loadWords();
     }
 
-    loadWords = async (page = 1) => {
+    loadWords = async () => {
         const response = await api.get(`/words`);
 
         const words = response.data;
-        console.log(words);
         words.sort(this.compare);
-        console.log(words);
-
-        this.setState({ words, loading: false });
+        this.setState({ words, loading: false, noWords: false });
     }
 
     compare(a, b) {
@@ -41,6 +47,31 @@ export default class Main extends React.Component {
         alert("Excluido com Sucesso!");
         this.loadWords();
     }
+
+    handleSearchTerm(event) {
+        event.preventDefault();
+        if (!event.target.value)
+            this.loadWords();
+
+
+        this.setState({ searchTerm: event.target.value }, () => this.searchInWords(this.state.searchTerm));
+
+    }
+
+    searchInWords(searchTerm) {
+        const words = this.state.words;
+
+        words.forEach(word => {
+            if (word.word.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+                this.foundWords.push(word)
+            }
+        });
+        if (this.foundWords.length == 0) this.setState({ noWords: true });
+
+        this.setState({ words: this.foundWords });
+        this.foundWords = [];
+    }
+
 
     // prevPage = () => {
     //     const { page } = this.state;
@@ -65,18 +96,27 @@ export default class Main extends React.Component {
 
     // O render fica escutando o state e quando há alguma alteração ele atualiza automaticamente
     render() {
-        const { words, page, wordInfo, loading } = this.state;
+        const { words, page, wordInfo, loading, noWords } = this.state;
 
         //A key serve para atribuir um valor unico a cada elemento gerado pelo map
         return (
             <div className="container">
                 <div className="word-list" >
-                    <div className="add-word-button">
-                        <Link to={'/new'} > <MdAddBox /> Adicionar Palavra</Link>
+                    <div className="functions-container">
+                        <div className="add-word-button">
+                            <Link to={'/new'} > <MdAdd /> Nova Palavra</Link>
+                        </div>
+                        <div className="search-input">
+                            <MdSearch className="search-icon" />
+                            <input type="text" placeholder="Pesquisar" name="searchTerm" value={this.state.searchTerm} onChange={this.handleSearchTerm} ></input>
+                        </div>
                     </div>
 
                     <div disabled={loading}>
                         {loading && <div className="loading-spinner" ></div>}
+                    </div>
+                    <div disabled={noWords}>
+                        {noWords && <h1 className="no-word-warning"> Nenhuma palavra encontrada! </h1>}
                     </div>
 
                     {words.map(word => (

@@ -28,6 +28,7 @@
 
 .add-word form label {
     margin: 20px 0 5px 0;
+    font-weight: 700;
     color:rgb(101, 63, 134, 1);
 }
 
@@ -37,9 +38,15 @@
     border-radius: 5px;
     line-height: 30px;
     color: #653f86;
-    font-size: 16px;
+    font-size: 1rem;
     padding: 0 10px;
     resize: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.add-word form input:focus, 
+.add-word form textarea:focus{
+    border-bottom: solid 2px rgba(101, 63, 134, 0.8);
 }
 
 .add-word form .submit-button {
